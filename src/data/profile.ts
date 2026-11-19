@@ -12,7 +12,7 @@ export const profile = {
   links: {
     linkedin: "https://www.linkedin.com/in/mahmoud-sayed-ashour",
     github: "https://github.com/mahmoudsayedashour",
-    portfolio: "https://mahmoud-sayed-ashour.netlify.app/",
+    portfolio: "https://mahmoud-ashour-portfolio.vercel.app/",
     hackerrank: "https://www.hackerrank.com/profile/mahmoudsayed",
     codeforces: "https://codeforces.com/profile/Mahmoudsayed",
   },
@@ -116,6 +116,14 @@ export const education = {
   major: "Data Science",
   period: "2022 – 2026",
   gpa: "Very Good",
+  coursework: [
+    "Deep Learning",
+    "Machine Learning",
+    "Recurrent Neural Networks (RNNs)",
+    "Operating Systems",
+    "Database Systems",
+    "Artificial Intelligence",
+  ],
 };
 
 export const certifications = [

@@ -12,23 +12,37 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
   const authNote = project.links.some((l) => /authentication required/i.test(l.note ?? ""));
 
   return (
-    <article className="card group flex h-full flex-col overflow-hidden rounded-2xl">
-      <Link href={`/projects/${project.slug}`} tabIndex={-1} aria-hidden className="block overflow-hidden">
+    <article className="card group relative flex h-full flex-col overflow-hidden rounded-2xl">
+      {/* Subtle dashboard widget top highlight */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
+
+      <Link href={`/projects/${project.slug}`} tabIndex={-1} aria-hidden className="block overflow-hidden border-b border-line/70">
         <div className="transition-transform duration-500 group-hover:scale-[1.03]">
-          <ProjectVisual project={project} sizes={large ? "(min-width: 1024px) 33vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"} />
+          <ProjectVisual
+            project={project}
+            sizes={
+              large
+                ? "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            }
+          />
         </div>
       </Link>
+
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-2">
           {project.featured && (
-            <span className="rounded-full bg-cyan-400/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-300">
+            <span className="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-300">
               Featured
             </span>
           )}
           <p className="text-xs text-muted">{project.category}</p>
         </div>
         <h3 className="mt-2 font-display text-lg font-semibold leading-snug">
-          <Link href={`/projects/${project.slug}`} className="hover:text-cyan-300">
+          <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-cyan-300">
             {project.title}
           </Link>
         </h3>
@@ -43,23 +57,23 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
           )}
         </ul>
 
-        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-5 text-sm font-medium">
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line/60 pt-4 text-sm font-medium">
           <Link href={`/projects/${project.slug}`} className="inline-flex items-center gap-1 text-cyan-300 hover:underline">
             View Case Study <ArrowUpRight size={15} aria-hidden />
           </Link>
           {live && (
-            <a href={live.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-fg">
+            <a href={live.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg">
               View Live Project <ExternalLink size={14} aria-hidden />
               {authNote && <Lock size={12} aria-label="Authentication required" />}
             </a>
           )}
           {gh && (
-            <a href={gh.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-fg">
+            <a href={gh.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg">
               <GithubIcon className="h-3.5 w-3.5" /> GitHub
             </a>
           )}
           {ext && (
-            <a href={ext.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-fg">
+            <a href={ext.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg">
               <LinkedinIcon className="h-3.5 w-3.5" /> LinkedIn Project
             </a>
           )}

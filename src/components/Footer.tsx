@@ -5,7 +5,7 @@ import { GithubIcon, LinkedinIcon } from "./icons";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line">
+    <footer className="relative z-10 border-t border-line bg-bg/75 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-muted sm:flex-row">
         <p>© {new Date().getFullYear()} {profile.name}. Giza, Egypt.</p>
         <ul className="flex items-center gap-4">

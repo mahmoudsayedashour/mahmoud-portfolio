@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         <p className="section-eyebrow">Projects</p>
         <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">All projects</h1>
         <p className="mt-4 max-w-2xl text-muted">
-          Ten projects across FMCG, e-commerce, healthcare, retail, and public-sector operations. Filter by discipline or search by tool and industry.
+          Ten projects across FMCG, e-commerce, healthcare, retail, and public-sector operations — three featured platforms followed by seven additional analytics engagements.
         </p>
       </div>
       <ProjectsSection heading={false} />
