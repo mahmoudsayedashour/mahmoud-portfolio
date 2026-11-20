@@ -10,7 +10,7 @@ export const profile = {
   cv: "/Mahmoud_Sayed_Ashour_Data_Analyst_CV.pdf",
   siteUrl: "https://mahmoud-ashour-portfolio.vercel.app",
   links: {
-    linkedin: "https://www.linkedin.com/in/mahmoud-sayed-ashour",
+    linkedin: "https://www.linkedin.com/in/mahmoud-sayed-ashour-b416b0275/",
     github: "https://github.com/mahmoudsayedashour",
     portfolio: "https://mahmoud-ashour-portfolio.vercel.app/",
     hackerrank: "https://www.hackerrank.com/profile/mahmoudsayed",
