@@ -110,7 +110,7 @@ const baseProjects: Omit<Project, "visual">[] = [
         note: "Authentication required.",
       },
     ],
-    note: "The live dashboard requires sign-in and contains confidential business data, so no screenshot is published. The visual shown is a concept visualization of the documented features.",
+    note: "The live dashboard requires sign-in and contains confidential business data. The visual above presents the official corporate brand identity of Greko Egypt.",
   },
   {
     slug: "greko-automated-daily-sales-dashboard",
@@ -168,7 +168,7 @@ const baseProjects: Omit<Project, "visual">[] = [
         note: "Authentication required.",
       },
     ],
-    note: "The live dashboard requires authentication. No ERP data, credentials, or internal endpoints are shown on this site; the visual is a concept visualization.",
+    note: "The live dashboard requires authentication. No confidential ERP transactional data or internal endpoints are exposed; the visual above presents the official corporate brand identity of Greko Egypt.",
   },
   {
     slug: "varel-antiques",
