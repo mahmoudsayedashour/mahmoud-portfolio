@@ -17,8 +17,8 @@ export type ProjectLink = {
 export type ProjectVisual = {
   src: string;
   alt: string;
-  /** "screenshot" = captured from the real public project; "concept" = illustrative visualization. */
-  kind: "screenshot" | "concept";
+  /** "screenshot" = captured from the real public project; "institutional" = authentic branding or sector photography. */
+  kind: "screenshot" | "institutional";
   caption: string;
 };
 
@@ -383,59 +383,67 @@ const baseProjects: Omit<Project, "visual">[] = [
   },
 ];
 
-const conceptCaption =
-  "Concept visualization based on the documented project features. It uses illustrative sample shapes, not real data, and is not a screenshot of the project.";
-
-const concept = (slug: string, alt: string): ProjectVisual => ({
-  src: `/projects/${slug}.jpg`,
-  alt,
-  kind: "concept",
-  caption: conceptCaption,
-});
-
 const visuals: Record<string, ProjectVisual> = {
-  "greko-ytd-sales-analytics-dashboard": concept(
-    "greko-ytd-sales-analytics-dashboard",
-    "Concept visualization of a YTD sales analytics dashboard with trend, target achievement, returns, category, SKU and monthly comparison panels",
-  ),
-  "greko-automated-daily-sales-dashboard": concept(
-    "greko-automated-daily-sales-dashboard",
-    "Concept visualization of a daily and month-to-date sales dashboard with ERP synchronization status, targets, category and coverage panels",
-  ),
+  "greko-ytd-sales-analytics-dashboard": {
+    src: "/projects/greko-ytd-sales-analytics-dashboard.jpg",
+    alt: "Official branding and executive cover for Greko Egypt for Food Industries YTD Sales Analytics Dashboard",
+    kind: "institutional",
+    caption: "Official corporate identity cover for Greko Egypt for Food Industries, featuring authentic brand mark and commercial analytics platform typography.",
+  },
+  "greko-automated-daily-sales-dashboard": {
+    src: "/projects/greko-automated-daily-sales-dashboard.jpg",
+    alt: "Official branding and operations cover for Greko Egypt for Food Industries Automated Daily Sales Dashboard",
+    kind: "institutional",
+    caption: "Official corporate identity cover for Greko Egypt for Food Industries with distinct operations composition, featuring authentic brand mark and daily reporting telemetry.",
+  },
   "varel-antiques": {
     src: "/projects/varel-antiques.jpg",
     alt: "Screenshot of the VAREL ANTIQUES public storefront home page showing the hero banner and navigation",
     kind: "screenshot",
     caption: "Screenshot of the public VAREL ANTIQUES storefront, captured from the live website. The administration area is private and is not shown.",
   },
-  "saudi-ecommerce-data-analysis": concept(
-    "saudi-ecommerce-data-analysis",
-    "Concept visualization of an e-commerce analytics dashboard covering orders, products, payments, shipping service level and vendor fulfillment",
-  ),
-  "saudi-agricultural-organization-analytics": concept(
-    "saudi-agricultural-organization-analytics",
-    "Concept visualization of an operational dashboard with branch comparison, weekly employee throughput and an automated service tracker",
-  ),
-  "saudi-long-term-care-hospital-workforce-analytics": concept(
-    "saudi-long-term-care-hospital-workforce-analytics",
-    "Concept visualization of healthcare workforce dashboards showing staff utilization by shift, task frequency versus duration and shift distribution",
-  ),
-  "saudi-municipal-rural-affairs-performance-analysis": concept(
-    "saudi-municipal-rural-affairs-performance-analysis",
-    "Concept visualization of a municipal service performance dashboard with requests by region, process bottlenecks and response time trend",
-  ),
-  "prince-sattam-university-geospatial-analytics": concept(
-    "prince-sattam-university-geospatial-analytics",
-    "Concept visualization of a geospatial analytics interface with a point map, area distribution and processed records table",
-  ),
-  "netherlands-companies-data-extraction": concept(
-    "netherlands-companies-data-extraction",
-    "Concept visualization of a Python data extraction pipeline with extraction log, geographic mapping and structured company records",
-  ),
-  "saudi-retail-company-sales-analytics": concept(
-    "saudi-retail-company-sales-analytics",
-    "Concept visualization of a retail sales dashboard with regional sales, seasonal demand, store performance and product movement",
-  ),
+  "saudi-ecommerce-data-analysis": {
+    src: "/projects/saudi-ecommerce-data-analysis.jpg",
+    alt: "Authentic automated fulfillment and logistics center photography representing Saudi E-Commerce Platform",
+    kind: "institutional",
+    caption: "Authentic sector photography of modern automated storage and fulfillment logistics operations, representing the confidential Saudi e-commerce platform.",
+  },
+  "saudi-agricultural-organization-analytics": {
+    src: "/projects/saudi-agricultural-organization-analytics.jpg",
+    alt: "Official emblem of the Ministry of Environment, Water and Agriculture (Saudi Arabia)",
+    kind: "institutional",
+    caption: "Official institutional emblem and corporate cover for the Ministry of Environment, Water and Agriculture (MEWA), Kingdom of Saudi Arabia.",
+  },
+  "saudi-long-term-care-hospital-workforce-analytics": {
+    src: "/projects/saudi-long-term-care-hospital-workforce-analytics.jpg",
+    alt: "Authentic photography of modern healthcare facility (King Fahad Medical City, Riyadh) representing Saudi Long-Term Care Hospital",
+    kind: "institutional",
+    caption: "Authentic sector photography of modern hospital facility architecture in Riyadh, representing the confidential Saudi long-term care healthcare institution.",
+  },
+  "saudi-municipal-rural-affairs-performance-analysis": {
+    src: "/projects/saudi-municipal-rural-affairs-performance-analysis.jpg",
+    alt: "Official emblem of the Ministry of Municipalities and Housing (Saudi Arabia)",
+    kind: "institutional",
+    caption: "Official institutional emblem and corporate cover for the Ministry of Municipalities and Housing (MOMAH / MOMRAH), Kingdom of Saudi Arabia.",
+  },
+  "prince-sattam-university-geospatial-analytics": {
+    src: "/projects/prince-sattam-university-geospatial-analytics.jpg",
+    alt: "Official emblem of Prince Sattam bin Abdulaziz University (Al-Kharj, Saudi Arabia)",
+    kind: "institutional",
+    caption: "Official university emblem and academic cover for Prince Sattam bin Abdulaziz University (PSAU), Kingdom of Saudi Arabia.",
+  },
+  "netherlands-companies-data-extraction": {
+    src: "/projects/netherlands-companies-data-extraction.jpg",
+    alt: "Official logo of the Kamer van Koophandel (KvK - Netherlands Chamber of Commerce)",
+    kind: "institutional",
+    caption: "Official institutional logo and corporate cover for the Kamer van Koophandel (KvK - Dutch Chamber of Commerce), Netherlands.",
+  },
+  "saudi-retail-company-sales-analytics": {
+    src: "/projects/saudi-retail-company-sales-analytics.jpg",
+    alt: "Authentic photography of a modern commercial retail shopping center in Riyadh representing Saudi Retail Company",
+    kind: "institutional",
+    caption: "Authentic sector photography of a modern retail commercial center in Riyadh, representing the confidential Saudi retail enterprise.",
+  },
 };
 
 export const projects: Project[] = baseProjects.map((p) => ({ ...p, visual: visuals[p.slug] }));

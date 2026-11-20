@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: Props) {
             <ProjectVisual project={p} priority sizes="(min-width: 896px) 896px, 100vw" />
           </div>
           <figcaption className="mt-3 text-xs text-muted">
-            {p.visual.kind === "screenshot" ? "Screenshot of the public project." : "Concept visualization — illustrative, not a screenshot of the project."}
+            {p.visual.caption}
           </figcaption>
         </figure>
 
@@ -172,10 +172,10 @@ export default async function ProjectPage({ params }: Props) {
           </Block>
         )}
 
-        <Block title="Project visuals">
+        <Block title="Project visual">
           <p className="text-sm leading-relaxed text-muted">
             <span className="mr-2 inline-block rounded-full border border-line bg-fg/[0.04] px-2.5 py-0.5 align-middle text-[11px] font-semibold uppercase tracking-wider text-accent">
-              {p.visual.kind === "screenshot" ? "Real screenshot" : "Concept visualization"}
+              {p.visual.kind === "screenshot" ? "Real Storefront" : "Institutional Cover"}
             </span>
             {p.visual.caption}
           </p>
