@@ -16,7 +16,7 @@ export function EducationCerts() {
           <article className="card flex h-full flex-col rounded-2xl p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <GraduationCap className="text-cyan-300" aria-hidden />
+                <GraduationCap className="text-accent" aria-hidden />
                 <h3 className="mt-4 font-display text-xl font-semibold">{education.school}</h3>
                 <p className="mt-1 text-muted">{education.faculty}</p>
               </div>
@@ -37,10 +37,10 @@ export function EducationCerts() {
               </div>
             </dl>
 
-            <div className="mt-6 rounded-xl border border-line bg-white/[0.025] p-4">
+            <div className="mt-6 rounded-xl border border-line bg-fg/[0.03] p-4">
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" aria-hidden="true" />
-                <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                   Relevant Coursework
                 </h4>
               </div>
@@ -51,7 +51,7 @@ export function EducationCerts() {
                     const Icon = courseIcons[idx];
                     return (
                       <li key={subject} className="flex items-start gap-2.5 text-sm text-fg/90">
-                        <Icon size={14} className="mt-[3px] shrink-0 text-cyan-300/85" aria-hidden="true" />
+                        <Icon size={14} className="mt-[3px] shrink-0 text-accent/85" aria-hidden="true" />
                         <span>{subject}</span>
                       </li>
                     );
@@ -62,7 +62,7 @@ export function EducationCerts() {
                     const Icon = courseIcons[idx + 3];
                     return (
                       <li key={subject} className="flex items-start gap-2.5 text-sm text-fg/90">
-                        <Icon size={14} className="mt-[3px] shrink-0 text-cyan-300/85" aria-hidden="true" />
+                        <Icon size={14} className="mt-[3px] shrink-0 text-accent/85" aria-hidden="true" />
                         <span>{subject}</span>
                       </li>
                     );
@@ -75,7 +75,7 @@ export function EducationCerts() {
 
         <Reveal delay={0.08}>
           <div className="card h-full rounded-2xl p-6">
-            <Award className="text-cyan-300" aria-hidden />
+            <Award className="text-accent" aria-hidden />
             <h3 className="mt-4 font-display text-xl font-semibold">Certifications</h3>
             <ul className="mt-4 divide-y divide-line">
               {certifications.map((c) => (

@@ -22,7 +22,7 @@ export function Contact() {
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
           <div className="glass relative overflow-hidden rounded-3xl p-8">
-            <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.2),transparent_70%)]" />
+            <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent)_14%,transparent),transparent_70%)]" />
             <h3 className="font-display text-2xl font-semibold">Have a dashboard, report, or data project in mind?</h3>
             <p className="mt-3 max-w-lg text-muted">
               The quickest way to reach me is by email. Tell me about the business question, the data you have, and the timeline.
@@ -45,13 +45,13 @@ export function Contact() {
           <ul className="card divide-y divide-line rounded-3xl">
             {items.map((it) => (
               <li key={it.label} className="flex items-center gap-4 p-5">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-blue-500/10 text-cyan-300">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand/10 text-accent">
                   <it.icon size={18} aria-hidden />
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-wider text-muted">{it.label}</p>
                   {it.href ? (
-                    <a href={it.href} className="break-all hover:text-cyan-300">{it.value}</a>
+                    <a href={it.href} className="break-all hover:text-accent">{it.value}</a>
                   ) : (
                     <p>{it.value}</p>
                   )}

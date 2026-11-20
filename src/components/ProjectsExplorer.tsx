@@ -9,7 +9,7 @@ export function ProjectsExplorer() {
   return (
     <div>
       <div className="mb-4 flex items-center gap-2.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" aria-hidden="true" />
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
         <h3 className="font-display text-lg font-semibold">Featured Projects</h3>
       </div>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -21,7 +21,7 @@ export function ProjectsExplorer() {
       </div>
 
       <div className="mb-4 mt-14 flex items-center gap-2.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-blue-400" aria-hidden="true" />
+        <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
         <h3 className="font-display text-lg font-semibold">All Projects</h3>
       </div>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

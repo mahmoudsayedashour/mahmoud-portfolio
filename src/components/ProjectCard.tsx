@@ -16,7 +16,7 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
       {/* Subtle dashboard widget top highlight */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
 
       <Link href={`/projects/${project.slug}`} tabIndex={-1} aria-hidden className="block overflow-hidden border-b border-line/70">
@@ -35,14 +35,14 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-2">
           {project.featured && (
-            <span className="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-300">
+            <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-accent">
               Featured
             </span>
           )}
           <p className="text-xs text-muted">{project.category}</p>
         </div>
         <h3 className="mt-2 font-display text-lg font-semibold leading-snug">
-          <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-cyan-300">
+          <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-accent">
             {project.title}
           </Link>
         </h3>
@@ -58,7 +58,7 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
         </ul>
 
         <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line/60 pt-4 text-sm font-medium">
-          <Link href={`/projects/${project.slug}`} className="inline-flex items-center gap-1 text-cyan-300 hover:underline">
+          <Link href={`/projects/${project.slug}`} className="inline-flex items-center gap-1 text-accent hover:underline">
             View Case Study <ArrowUpRight size={15} aria-hidden />
           </Link>
           {live && (

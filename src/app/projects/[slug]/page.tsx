@@ -65,12 +65,12 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <article className="pt-24">
       <div className="relative overflow-hidden border-b border-line">
-        <div className="bg-grid pointer-events-none absolute inset-0" />
+        <div className="pointer-events-none absolute inset-0 opacity-30" style={{backgroundImage:'radial-gradient(circle at 20% 50%, var(--brand) 0%, transparent 55%)'}} aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl px-5 pb-12 pt-10">
           <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-muted hover:text-fg">
             <ArrowLeft size={16} aria-hidden /> All projects
           </Link>
-          <p className="mt-6 text-sm text-cyan-300">{p.category}</p>
+          <p className="mt-6 text-sm text-accent">{p.category}</p>
           <h1 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">{p.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">{p.summary}</p>
           <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-3 text-sm">
@@ -105,9 +105,14 @@ export default async function ProjectPage({ params }: Props) {
       </div>
 
       <div className="mx-auto max-w-4xl px-5 pb-20">
-        <div className="mt-10 overflow-hidden rounded-2xl border border-line">
-          <ProjectVisual project={p} priority sizes="(min-width: 896px) 896px, 100vw" />
-        </div>
+        <figure className="mt-10">
+          <div className="overflow-hidden rounded-2xl border border-line shadow-[var(--card-shadow)]">
+            <ProjectVisual project={p} priority sizes="(min-width: 896px) 896px, 100vw" />
+          </div>
+          <figcaption className="mt-3 text-xs text-muted">
+            {p.visual.kind === "screenshot" ? "Screenshot of the public project." : "Concept visualization — illustrative, not a screenshot of the project."}
+          </figcaption>
+        </figure>
 
         <Block title="Overview">
           <p className="leading-relaxed text-muted">{p.overview}</p>
@@ -124,7 +129,7 @@ export default async function ProjectPage({ params }: Props) {
             <ul className="grid gap-2 sm:grid-cols-2">
               {p.responsibilities.map((r) => (
                 <li key={r} className="flex gap-3 text-muted">
-                  <Check size={16} className="mt-1 shrink-0 text-cyan-300" aria-hidden /> {r}
+                  <Check size={16} className="mt-1 shrink-0 text-accent" aria-hidden /> {r}
                 </li>
               ))}
             </ul>
@@ -136,7 +141,7 @@ export default async function ProjectPage({ params }: Props) {
             <ul className="space-y-3">
               {p.solution.map((s) => (
                 <li key={s} className="flex gap-3 leading-relaxed text-muted">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" aria-hidden /> {s}
+                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden /> {s}
                 </li>
               ))}
             </ul>
@@ -147,7 +152,7 @@ export default async function ProjectPage({ params }: Props) {
           <ul className="grid gap-3 sm:grid-cols-2">
             {p.features.map((f) => (
               <li key={f} className="card flex gap-3 rounded-xl p-4 text-sm leading-relaxed">
-                <Check size={16} className="mt-0.5 shrink-0 text-cyan-300" aria-hidden /> {f}
+                <Check size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden /> {f}
               </li>
             ))}
           </ul>
@@ -168,13 +173,12 @@ export default async function ProjectPage({ params }: Props) {
         )}
 
         <Block title="Project visuals">
-          {p.screenshot ? (
-            <p className="text-sm text-muted">Screenshot captured from the public project, shown above.</p>
-          ) : (
-            <p className="text-sm text-muted">
-              No public screenshot is available for this project, so the visual above is an illustrative placeholder, not project evidence.
-            </p>
-          )}
+          <p className="text-sm leading-relaxed text-muted">
+            <span className="mr-2 inline-block rounded-full border border-line bg-fg/[0.04] px-2.5 py-0.5 align-middle text-[11px] font-semibold uppercase tracking-wider text-accent">
+              {p.visual.kind === "screenshot" ? "Real screenshot" : "Concept visualization"}
+            </span>
+            {p.visual.caption}
+          </p>
         </Block>
       </div>
 

@@ -7,23 +7,19 @@ export type FilterTag =
   | "Healthcare"
   | "Government & Operations";
 
-export const FILTERS: ("All Projects" | "Featured" | FilterTag)[] = [
-  "All Projects",
-  "Featured",
-  "Business Intelligence",
-  "Data Analytics",
-  "Python & Automation",
-  "Full-Stack Development",
-  "E-Commerce",
-  "Healthcare",
-  "Government & Operations",
-];
-
 export type ProjectLink = {
   label: string;
   href: string;
   kind: "live" | "github" | "linkedin";
   note?: string;
+};
+
+export type ProjectVisual = {
+  src: string;
+  alt: string;
+  /** "screenshot" = captured from the real public project; "concept" = illustrative visualization. */
+  kind: "screenshot" | "concept";
+  caption: string;
 };
 
 export type Project = {
@@ -44,15 +40,12 @@ export type Project = {
   technologies: string[];
   businessValue?: string;
   links: ProjectLink[];
-  /** Real screenshot path under /public, only when one was actually captured. */
-  screenshot?: string;
-  screenshotAlt?: string;
-  /** Shown when no real screenshot exists; rendered as a clearly-labelled placeholder. */
-  accent: "blue" | "cyan" | "indigo" | "teal";
+  /** Local image asset shown on cards and case-study pages. */
+  visual: ProjectVisual;
   note?: string;
 };
 
-export const projects: Project[] = [
+const baseProjects: Omit<Project, "visual">[] = [
   {
     slug: "greko-ytd-sales-analytics-dashboard",
     title: "Greko Egypt YTD Sales Analytics Dashboard",
@@ -117,8 +110,7 @@ export const projects: Project[] = [
         note: "Authentication required.",
       },
     ],
-    accent: "blue",
-    note: "The live dashboard opens on a sign-in page and contains confidential business data, so no screenshot is published. Access to features and data requires authorization.",
+    note: "The live dashboard requires sign-in and contains confidential business data, so no screenshot is published. The visual shown is a concept visualization of the documented features.",
   },
   {
     slug: "greko-automated-daily-sales-dashboard",
@@ -176,8 +168,7 @@ export const projects: Project[] = [
         note: "Authentication required.",
       },
     ],
-    accent: "cyan",
-    note: "The live dashboard requires authentication. No ERP data, credentials, or internal endpoints are shown on this site.",
+    note: "The live dashboard requires authentication. No ERP data, credentials, or internal endpoints are shown on this site; the visual is a concept visualization.",
   },
   {
     slug: "varel-antiques",
@@ -231,9 +222,6 @@ export const projects: Project[] = [
     links: [
       { label: "View Live Project", href: "https://varel-antiques.vercel.app", kind: "live" },
     ],
-    screenshot: "/projects/varel-antiques.png",
-    screenshotAlt: "Screenshot of the VAREL ANTIQUES public storefront home page",
-    accent: "indigo",
     note: "Admin access is restricted; no credentials are published.",
   },
   {
@@ -259,7 +247,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/etTDR8DG", kind: "linkedin" },
     ],
-    accent: "blue",
   },
   {
     slug: "saudi-agricultural-organization-analytics",
@@ -284,7 +271,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/eWg59A4M", kind: "linkedin" },
     ],
-    accent: "teal",
   },
   {
     slug: "saudi-long-term-care-hospital-workforce-analytics",
@@ -308,7 +294,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/ee7CpSTm", kind: "linkedin" },
     ],
-    accent: "cyan",
   },
   {
     slug: "saudi-municipal-rural-affairs-performance-analysis",
@@ -331,7 +316,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/ezVBectT", kind: "linkedin" },
     ],
-    accent: "indigo",
   },
   {
     slug: "prince-sattam-university-geospatial-analytics",
@@ -353,7 +337,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/ecKPdvQC", kind: "linkedin" },
     ],
-    accent: "teal",
   },
   {
     slug: "netherlands-companies-data-extraction",
@@ -376,7 +359,6 @@ export const projects: Project[] = [
     links: [
       { label: "View LinkedIn Project", href: "https://lnkd.in/p/e_pe9jgE", kind: "linkedin" },
     ],
-    accent: "blue",
   },
   {
     slug: "saudi-retail-company-sales-analytics",
@@ -397,10 +379,66 @@ export const projects: Project[] = [
     ],
     technologies: ["POS Data Analysis", "Dashboard Design"],
     links: [],
-    accent: "indigo",
     note: "No public project link is available for this engagement.",
   },
 ];
+
+const conceptCaption =
+  "Concept visualization based on the documented project features. It uses illustrative sample shapes, not real data, and is not a screenshot of the project.";
+
+const concept = (slug: string, alt: string): ProjectVisual => ({
+  src: `/projects/${slug}.jpg`,
+  alt,
+  kind: "concept",
+  caption: conceptCaption,
+});
+
+const visuals: Record<string, ProjectVisual> = {
+  "greko-ytd-sales-analytics-dashboard": concept(
+    "greko-ytd-sales-analytics-dashboard",
+    "Concept visualization of a YTD sales analytics dashboard with trend, target achievement, returns, category, SKU and monthly comparison panels",
+  ),
+  "greko-automated-daily-sales-dashboard": concept(
+    "greko-automated-daily-sales-dashboard",
+    "Concept visualization of a daily and month-to-date sales dashboard with ERP synchronization status, targets, category and coverage panels",
+  ),
+  "varel-antiques": {
+    src: "/projects/varel-antiques.jpg",
+    alt: "Screenshot of the VAREL ANTIQUES public storefront home page showing the hero banner and navigation",
+    kind: "screenshot",
+    caption: "Screenshot of the public VAREL ANTIQUES storefront, captured from the live website. The administration area is private and is not shown.",
+  },
+  "saudi-ecommerce-data-analysis": concept(
+    "saudi-ecommerce-data-analysis",
+    "Concept visualization of an e-commerce analytics dashboard covering orders, products, payments, shipping service level and vendor fulfillment",
+  ),
+  "saudi-agricultural-organization-analytics": concept(
+    "saudi-agricultural-organization-analytics",
+    "Concept visualization of an operational dashboard with branch comparison, weekly employee throughput and an automated service tracker",
+  ),
+  "saudi-long-term-care-hospital-workforce-analytics": concept(
+    "saudi-long-term-care-hospital-workforce-analytics",
+    "Concept visualization of healthcare workforce dashboards showing staff utilization by shift, task frequency versus duration and shift distribution",
+  ),
+  "saudi-municipal-rural-affairs-performance-analysis": concept(
+    "saudi-municipal-rural-affairs-performance-analysis",
+    "Concept visualization of a municipal service performance dashboard with requests by region, process bottlenecks and response time trend",
+  ),
+  "prince-sattam-university-geospatial-analytics": concept(
+    "prince-sattam-university-geospatial-analytics",
+    "Concept visualization of a geospatial analytics interface with a point map, area distribution and processed records table",
+  ),
+  "netherlands-companies-data-extraction": concept(
+    "netherlands-companies-data-extraction",
+    "Concept visualization of a Python data extraction pipeline with extraction log, geographic mapping and structured company records",
+  ),
+  "saudi-retail-company-sales-analytics": concept(
+    "saudi-retail-company-sales-analytics",
+    "Concept visualization of a retail sales dashboard with regional sales, seasonal demand, store performance and product movement",
+  ),
+};
+
+export const projects: Project[] = baseProjects.map((p) => ({ ...p, visual: visuals[p.slug] }));
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 

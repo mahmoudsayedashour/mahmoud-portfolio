@@ -20,7 +20,7 @@ export function About() {
               const Icon = icons[i];
               return (
                 <div key={f.label} className="card rounded-2xl p-4">
-                  <Icon size={18} className="text-cyan-300" aria-hidden />
+                  <Icon size={18} className="text-accent" aria-hidden />
                   <dt className="mt-3 text-xs uppercase tracking-wider text-muted">{f.label}</dt>
                   <dd className="mt-1 text-sm font-medium">{f.value}</dd>
                 </div>

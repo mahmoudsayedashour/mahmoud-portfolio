@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { profile } from "@/data/profile";
+import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
   { href: "/#about", id: "about", label: "About" },
@@ -20,7 +21,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollActiveId, setScrollActiveId] = useState<string>("");
-  const activeId = pathname !== "/" ? (pathname.startsWith("/projects") ? "projects" : "") : scrollActiveId;
+  const activeId =
+    pathname !== "/" ? (pathname.startsWith("/projects") ? "projects" : "") : scrollActiveId;
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 12);
@@ -80,7 +82,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 font-display font-semibold"
           aria-label="Mahmoud Sayed Ashour — home"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-bold text-white shadow-[0_0_16px_rgba(34,211,238,0.28)]">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--btn-a)] to-[var(--btn-b)] text-sm font-bold text-white">
             MA
           </span>
           <span className="hidden sm:inline">Mahmoud Ashour</span>
@@ -101,28 +103,32 @@ export function Navbar() {
                 {n.label}
                 <span
                   aria-hidden="true"
-                  className={`pointer-events-none absolute inset-x-3 bottom-1 h-[2px] rounded-full bg-gradient-to-r from-blue-400 to-cyan-300 transition-opacity duration-200 ${
+                  className={`pointer-events-none absolute inset-x-3 bottom-1 h-[2px] rounded-full bg-gradient-to-r from-brand to-accent transition-opacity duration-200 ${
                     active ? "opacity-100" : "opacity-0"
                   }`}
                 />
               </Link>
             );
           })}
-          <a href={profile.cv} download className="btn btn-primary ml-3 !py-2">
+          <ThemeToggle className="ml-2" />
+          <a href={profile.cv} download className="btn btn-primary ml-2 !py-2">
             <Download size={16} aria-hidden /> Download CV
           </a>
         </nav>
 
-        <button
-          type="button"
-          className="grid h-10 w-10 place-items-center rounded-lg border border-line lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-line"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -136,7 +142,7 @@ export function Navbar() {
                     href={n.href}
                     onClick={() => setOpen(false)}
                     className={`block rounded-lg px-3 py-3 text-base transition-colors ${
-                      active ? "bg-cyan-400/10 text-cyan-200" : "text-fg hover:bg-white/5"
+                      active ? "bg-accent/10 text-accent" : "text-fg hover:bg-fg/5"
                     }`}
                   >
                     {n.label}

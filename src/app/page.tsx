@@ -5,23 +5,23 @@ import { Skills } from "@/components/Skills";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { EducationCerts } from "@/components/EducationCerts";
 import { Contact } from "@/components/Contact";
-import { SectionConnector } from "@/components/Reveal";
+import { SectionDivider } from "@/components/Reveal";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SectionConnector />
+      <SectionDivider />
       <About />
-      <SectionConnector />
+      <SectionDivider />
       <Experience />
-      <SectionConnector />
+      <SectionDivider />
       <Skills />
-      <SectionConnector />
+      <SectionDivider />
       <ProjectsSection />
-      <SectionConnector />
+      <SectionDivider />
       <EducationCerts />
-      <SectionConnector />
+      <SectionDivider />
       <Contact />
     </>
   );

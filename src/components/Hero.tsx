@@ -14,19 +14,19 @@ export function Hero() {
         <div className="min-w-0">
           <p className="chip mb-5 gap-2">
             <span
-              className="h-1.5 w-1.5 rounded-full bg-cyan-300"
+              className="h-1.5 w-1.5 rounded-full bg-accent"
               style={{ animation: "pulse-soft 2.4s ease-in-out infinite" }}
             />
             Data Analyst · Business Intelligence Developer
           </p>
 
-          <p className="neon-name font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem]">
+          <p className="name-glow font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem]">
             {profile.name}
           </p>
 
           <h1
             id="hero-title"
-            className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.12] tracking-tight text-fg/95 sm:text-4xl lg:text-[2.85rem] xl:text-[3.1rem]"
+            className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.12] tracking-tight text-fg sm:text-4xl lg:text-[2.85rem] xl:text-[3.1rem]"
           >
             Turning Complex Data into{" "}
             <span className="text-gradient">Clear Business Decisions.</span>

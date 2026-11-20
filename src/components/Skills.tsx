@@ -19,7 +19,7 @@ export function Skills() {
             <Reveal key={g.title} delay={(i % 3) * 0.06}>
               <div className="card h-full rounded-2xl p-5">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-blue-500/10 text-cyan-300">
+                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand/10 text-accent">
                     <Icon size={18} aria-hidden />
                   </span>
                   <h3 className="font-display text-base font-semibold">{g.title}</h3>
